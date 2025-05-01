@@ -59,38 +59,6 @@ fi
 
 
 
-# dnf list installed git -y &>>$LOG_FILE_NAME
-
-# if [ $? -ne 0 ]
-#     then #not Installed
-#     dnf install git -y &>>$LOG_FILE_NAME
-#     VALIDATE $? "Installing GIT"
-#     # if [ $? -ne 0 ]
-#         # then # not Installed
-#         # echo "Installing GIT ... FAILED"
-#         # exit 1
-#         # else
-#         # echo "Installing GIT ... SUCCESSFULLY"
-#     # fi
-# else
-# echo -e "GIT Already ... $Y INSTALLED $N"
-# fi
-
-# dnf list installed mysql &>>$LOG_FILE_NAME
-# if [ $? -ne 0 ]
-# then # not installed
-#     dnf install mysql -y &>>$LOG_FILE_NAME
-#     VALIDATE $? "Installing MYSQL"
-#     # if [ $? -ne 0 ]
-#         # then
-#         # echo "Installing MYSQL ....FAILED"
-#         # exit 1 
-#         # else
-#         # echo "Installing MYSQL ....SUCCESSFULLY"
-#     # fi
-#     else
-#     echo -e "MYSQL Already... $Y INSTALLED $N"
-# fi
 
 
 

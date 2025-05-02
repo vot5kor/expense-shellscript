@@ -48,7 +48,7 @@ VALIDATE $? "Installing Nodejs"
 
 id expense &>>$LOG_FILE_NAME
 if [$? -ne 0]
-than
+then
     useradd expense &>>$LOG_FILE_NAME
     VALIDATE $? "Creating expense user"
 else

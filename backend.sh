@@ -82,6 +82,8 @@ cp /home/ec2-user/expense-shellscript/backend.service /etc/systemd/system/backen
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MYSQL Client"
 
+sleep 30
+
 mysql -h mysql.tuktukride.online -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 VALIDATE $? "Setting up transactions schema and tables"
 

@@ -8,10 +8,11 @@ N="\e[0m"
 
 LOGS_FOLDER="/var/log/expense-logs"
 FILE_NAME=$(echo $0 | cut -d "." -f1  )
+echo "test: $0 | cut -d "." -f1 "
 TIMESTAMP=$(date  +%Y-%m-%d:%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$FILE_NAME-$TIMESTAMP.log"
 echo "test: $LOG_FILE_NAME" &>>$LOG_FILE_NAME
-
+echo "test: $1"
 VALIDATE()
 {
              if [ $1 -ne 0 ]
@@ -23,7 +24,7 @@ VALIDATE()
             fi
 }
 
-
+echo "test: $USERID"
 CHECK_ROOT(){
 if [ $USERID -ne 0 ]
 then

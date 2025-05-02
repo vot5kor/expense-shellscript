@@ -64,6 +64,9 @@ VALIDATE $? "Download the application code"
 cd /app
 VALIDATE $? "Goto app directoty"
 
+rm /app/*
+VALIDATE $? "removing all files in app directory"
+
 unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE $? " Unzip the backend "
 

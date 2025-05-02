@@ -76,14 +76,14 @@ VALIDATE $? " Installing Dependencies "
 #Setup SystemD Expense Backend Service
 #vim /etc/systemd/system/backend.service
 #cp backend.service /etc/systemd/system/backend.service
-cp /home/ec2-user/expense-shellscript/backend.service /etc/systemd/system/backend.servic
+cp /home/ec2-user/expense-shellscript/backend.service /etc/systemd/system/backend.service
 
 #Prepare MYSQL Schema
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MYSQL Client"
 
 
-mysql -h mysql.tuktukride.online -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
+mysql -h mysql.tuktukride.online -u root -p ExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 VALIDATE $? "Setting up transactions schema and tables"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME

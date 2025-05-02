@@ -8,7 +8,7 @@ N="\e[0m"
 
 LOGS_FOLDER="/var/log/expense-logs"
 FILE_NAME=$(echo $0 | cut -d "." -f1  )
-echo "test: $0 | cut -d "." -f1 "
+echo "test: FILE_NAME"
 TIMESTAMP=$(date  +%Y-%m-%d:%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$FILE_NAME-$TIMESTAMP.log"
 echo "test: $LOG_FILE_NAME" &>>$LOG_FILE_NAME

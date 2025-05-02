@@ -46,8 +46,14 @@ VALIDATE $? "Enabling Nodejs20"
 dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing Nodejs"
 
-useradd expense &>>$LOG_FILE_NAME
-VALIDATE $? "Creating expense user"
+id expense &>>$LOG_FILE_NAME
+if [$? -ne 0]
+than
+    useradd expense &>>$LOG_FILE_NAME
+    VALIDATE $? "Creating expense user"
+else
+    echo -e "User already exists .... $Y SKIPPING $N"
+fi
 
 mkdir /app &>>$LOG_FILE_NAME
 VALIDATE $? "Creating app Directory"
@@ -73,7 +79,7 @@ cp /home/ec2-user/expense-shellscript/backend.service /etc/systemd/system/backen
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MYSQL Client"
 
-mysql -h mysql.tuktukride.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
+mysql -h mysql.tuktukride.online -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 VALIDATE $? "Setting up transactions schema and tables"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME

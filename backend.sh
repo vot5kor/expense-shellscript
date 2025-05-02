@@ -83,7 +83,7 @@ dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MYSQL Client"
 
 
-mysql -h mysql.tuktukride.online -u root -p ExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
+mysql -h mysql.tuktukride.online -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 VALIDATE $? "Setting up transactions schema and tables"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME

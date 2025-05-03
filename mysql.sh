@@ -13,6 +13,7 @@ TIMESTAMP=$(date  +%Y-%m-%d:%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$FILE_NAME-$TIMESTAMP.log"
 echo "test: $LOG_FILE_NAME" &>>$LOG_FILE_NAME
 
+
 VALIDATE()
 {
              if [ $1 -ne 0 ]
@@ -34,7 +35,7 @@ then
 fi
 }
 
-mkdir -p $LOGS_FOLDER &>>$LOG_FILE_NAME
+mkdir -p $LOGS_FOLDER 
 VALIDATE $? "creating expense-logs folder "
 
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME

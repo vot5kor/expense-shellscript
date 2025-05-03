@@ -34,6 +34,9 @@ then
 fi
 }
 
+mkdir -p $LOGS_FOLDER
+VALIDATE $? "creating expense-logs folder "
+
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT

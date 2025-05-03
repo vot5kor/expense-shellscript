@@ -23,8 +23,6 @@ VALIDATE()
                  echo -e "$2 ... $G SUCCESS $N"
             fi
 }
-
-
 CHECK_ROOT(){
 if [ $USERID -ne 0 ]
 then
@@ -40,29 +38,26 @@ VALIDATE $? "creating expense-logs folder "
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT
+dnf install nginx -y 
+VALIDATE $? "Install Nginx server"
 
-dnf install mysql-server -y &>>$LOG_FILE_NAME
-VALIDATE $? "Installing mysql server"
+systemctl enable nginx
+VALIDATE $? "Enable Nginx server"
 
-systemctl enable mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "Enabling mysql server"
+systemctl start nginx
+VALIDATE $? "Start Nginx server"
 
-systemctl start mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "Start mysql server"
+rm -rf /usr/share/nginx/html/*
+VALIDATE $? "Removing the existing version of code"
 
-mysql -h mysql.tuktukride.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
-if [ $? -ne 0 ]
-then
-    echo "mysql root password not setup" &>>$LOG_FILE_NAME
-    mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
-    VALIDATE $? "Setting root password"
-else
-    echo -e "mysql root password already setup .... $Y SKIPPING $N"
-fi
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+VALIDATE $? "Download the latest code"
 
+cd /usr/share/nginx/html
+VALIDATE $? "Moving to HTML directory"
 
+unzip /tmp/frontend.zip
+VALIDATE $? "Unzipping the frontend code"
 
-
-
-
-
+systemctl restart nginx
+VALIDATE $? "re=start the Nginx server"

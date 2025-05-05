@@ -95,7 +95,7 @@ VALIDATE $? "Demoan Reload"
 systemctl enable backend &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling Backend"
 
-systemctl start backend &>>$LOG_FILE_NAME
-VALIDATE $? "Start Backend"
+systemctl re-start backend &>>$LOG_FILE_NAME
+VALIDATE $? "Re-Start Backend"
 
 

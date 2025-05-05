@@ -63,5 +63,5 @@ VALIDATE $? "Unzipping the frontend code"
 systemctl enable nginx >>$LOG_FILE_NAME
 VALIDATE $? "Enable Nginx"
 
-systemctl restart nginx &>>$LOG_FILE_NAME
-VALIDATE $? "re-start the Nginx server"
+systemctl start nginx &>>$LOG_FILE_NAME
+VALIDATE $? "start the Nginx server"

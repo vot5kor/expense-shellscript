@@ -60,5 +60,8 @@ VALIDATE $? "Moving to HTML directory"
 unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Unzipping the frontend code"
 
+systemctl enable nginx >>$LOG_FILE_NAME
+VALIDATE $? "Enable Nginx"
+
 systemctl restart nginx &>>$LOG_FILE_NAME
-VALIDATE $? "re=start the Nginx server"
+VALIDATE $? "re-start the Nginx server"

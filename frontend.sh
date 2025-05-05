@@ -61,7 +61,7 @@ unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Unzipping the frontend code"
 
 cp /home/ec2-user/expense-shellscript/expense.conf /etc/nginx/default.d/expense.conf
-VALIDATE $? "Enable Nginx"
+VALIDATE $? "Copied expense config"
 
 systemctl start nginx &>>$LOG_FILE_NAME
 VALIDATE $? "start the Nginx server"

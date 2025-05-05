@@ -60,7 +60,7 @@ VALIDATE $? "Moving to HTML directory"
 unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Unzipping the frontend code"
 
-systemctl enable nginx >>$LOG_FILE_NAME
+cp /home/ec2-user/expense-shellscript/expense.conf /etc/nginx/default.d/expense.conf
 VALIDATE $? "Enable Nginx"
 
 systemctl start nginx &>>$LOG_FILE_NAME
